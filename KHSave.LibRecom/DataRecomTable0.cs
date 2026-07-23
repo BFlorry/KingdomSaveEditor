@@ -197,7 +197,7 @@ namespace KHSave.LibRecom
         [Data] public int UnknownBd { get; set; }
         [Data] public int UnknownBe { get; set; }
         [Data] public int UnknownBf { get; set; }
-        [Data] public int UnknownC0 { get; set; }
+        [Data] public int PlayTimeInSeconds { get; set; }
         [Data] public StoryFlag SoraStoryFlag { get; set; }
         [Data] public StoryFlag RikuStoryFlag { get; set; }
         [Data] public TutorialFlags Tutorial { get; set; }
