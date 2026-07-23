@@ -51,8 +51,8 @@ namespace KHSave.Lib3.Types
         [Info("Starlight / Knights of the Round Total Uses")] Usage1a,
         [Info("Starlight / Union Ragnarok Total Uses")] Usage1b,
         [Info("Ultima Weapon / Infinity Circle Total Uses")] Usage1c,
-        [Unused] [Info("")] Usage1d,
-        [Unused] [Info("")] Usage1e,
-        [Unused] [Info("")] Usage1f,
+        [Unused][Info("")] Usage1d,
+        [Unused][Info("")] Usage1e,
+        [Unused][Info("")] Usage1f,
     }
 }

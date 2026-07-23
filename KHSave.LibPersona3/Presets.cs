@@ -13,15 +13,15 @@ namespace KHSave.LibPersona3
         }
 
         private static Field FieldVF_(int category, int map, string description) => new()
-            { Zone = category, Room = map, Description = description, Game = GameVersion.Vanilla | GameVersion.FES };
+        { Zone = category, Room = map, Description = description, Game = GameVersion.Vanilla | GameVersion.FES };
         private static Field FieldVFP(int category, int map, string description) => new()
-            { Zone = category, Room = map, Description = description, Game = GameVersion.Vanilla | GameVersion.FES | GameVersion.Portable };
+        { Zone = category, Room = map, Description = description, Game = GameVersion.Vanilla | GameVersion.FES | GameVersion.Portable };
         private static Field Field_F_(int category, int map, string description) => new()
-            { Zone = category, Room = map, Description = description, Game = GameVersion.FES };
+        { Zone = category, Room = map, Description = description, Game = GameVersion.FES };
         private static Field Field_FP(int category, int map, string description) => new()
-            { Zone = category, Room = map, Description = description, Game = GameVersion.FES | GameVersion.Portable };
+        { Zone = category, Room = map, Description = description, Game = GameVersion.FES | GameVersion.Portable };
         private static Field Field__P(int category, int map, string description) => new()
-            { Zone = category, Room = map, Description = description, Game = GameVersion.Portable };
+        { Zone = category, Room = map, Description = description, Game = GameVersion.Portable };
 
         public static List<Field> Fields = new()
         {

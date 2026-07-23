@@ -41,8 +41,8 @@ namespace KHSave.LibRecom.Types
         [CardMagic] Stop,
         [CardMagic] Aero,
 
-        [Unused] [CardMagic("-")] DummyMagic1,
-        [Unused] [CardMagic("-")] DummyMagic2,
+        [Unused][CardMagic("-")] DummyMagic1,
+        [Unused][CardMagic("-")] DummyMagic2,
 
         [CardSummonAttribute("Simba")] Simba,
         [CardSummonAttribute("Genie")] Genie,

@@ -85,7 +85,7 @@ namespace KHSave.LibPersona3.Types
     {
         public JudgementAttribute(string name = null, bool royal = false) : base(name, royal, "Judgement") { }
     }
-    
+
     public class AeonAttribute : DemonAttribute
     {
         public AeonAttribute(string name = null, bool royal = false) : base(name, royal, "Aeon") { }

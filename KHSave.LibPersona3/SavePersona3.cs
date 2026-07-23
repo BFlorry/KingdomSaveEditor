@@ -31,7 +31,7 @@ namespace KHSave.LibPersona3
         [Info("Late Night")] LateNight,
         [Info("Dark Hour")] DarkHour,
     }
-    
+
     public enum McStatus : short
     {
         [Info] Good,
@@ -74,7 +74,7 @@ namespace KHSave.LibPersona3
         {
             FemaleProtagonist = 4103,
         }
-        
+
         internal static IBinaryMapping Mapper;
 
         static SavePersona3()
