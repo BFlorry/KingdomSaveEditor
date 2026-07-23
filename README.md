@@ -14,7 +14,7 @@
 | Final Fantasy VII Remake       | PS4/PC          | All    |
 | Persona 5, Persona 5 Royal     | PS3/PS4         | US/EU  |
 
-[![Download](https://img.shields.io/github/downloads/BFlorry/KingdomSaveEditor/total.svg?)](https://github.com/BFlorry/KingdomSaveEditor/releases)*
+[![Download](https://img.shields.io/github/downloads/BFlorry/KingdomSaveEditor/total.svg?)](https://github.com/BFlorry/KingdomSaveEditor/releases)
 ![Last commit](https://img.shields.io/github/last-commit/BFlorry/KingdomSaveEditor.svg)
 ![Tests status](https://github.com/BFlorry/KingdomSaveEditor/workflows/Tests/badge.svg)
 
