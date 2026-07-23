@@ -14,19 +14,14 @@
 | Final Fantasy VII Remake       | PS4/PC          | All    |
 | Persona 5, Persona 5 Royal     | PS3/PS4         | US/EU  |
 
-[![Download](https://img.shields.io/github/downloads/xeeynamo/kh3saveeditor/total.svg?)](https://github.com/Xeeynamo/KH3SaveEditor/releases)*
-![Last commit](https://img.shields.io/github/last-commit/xeeynamo/kh3saveeditor.svg)
-![Tests status](https://github.com/xeeynamo/kh3saveeditor/workflows/Tests/badge.svg)
-
-<sub><sup>*download count does not include downloads from the Microsoft Store.</sup></sub>
-
-## Donations
-
-My GitHub is open to a [sponsor program](https://github.com/sponsors/Xeeynamo). If you feel that the editor helped you in some way or you would like to support it, you can consider to [donate me](https://github.com/sponsors/Xeeynamo).
+[![Download](https://img.shields.io/github/downloads/BFlorry/KingdomSaveEditor/total.svg?)](https://github.com/BFlorry/KingdomSaveEditor/releases)*
+![Last commit](https://img.shields.io/github/last-commit/BFlorry/KingdomSaveEditor.svg)
+![Tests status](https://github.com/BFlorry/KingdomSaveEditor/workflows/Tests/badge.svg)
 
 ## User guide
 
-You need to decrypt your save before opening it with Kingdom Save Editor. Please refer to [this guide](docs/decryption.md) to know how to decrypt your save.
+If reading/editing a console save, you need to decrypt your save before opening it with Kingdom Save Editor. Please refer to [this guide](docs/decryption.md) to know how to decrypt your save. 
+PC versions do not need decrypting and eg. for KH HD1.5+2.5 REMIX Steam version (in Windows) the saves can be found in `C:\Users\{$USERNAME}\Documents\My Games\KINGDOM HEARTS HD 1.5+2.5 ReMIX\Steam\{$ID}\` and the save files are .png files.
 
 ## Contribution
 
@@ -38,6 +33,7 @@ If you want to add missing names, improve it or add new offsets, just clone the 
 
 ## Special thanks
 
+* xeeynamo for the project and codebase creation and maintaining up until 2022
 * Rikux3 for the incredible support of Kingdom Hearts 1 and Birth By Sleep Final Mix, the PC release of Kingdom Hearts games, the CBS PSU and PSV support
 * Keytotruth for additional coding and offset findings for Kingdom Hearts III
 * Delta-47 for the incredible support of Dream Drop Distance for 3DS, PS4 and PC and the European/Japanese support for Kingdom Hearts 1
@@ -49,7 +45,8 @@ If you want to add missing names, improve it or add new offsets, just clone the 
 * Silvercam for the list of gummiship inventory items for Kingdom Hearts III
 * Luseu to have provided the majority of Final Fantasy VII Remake offsets
 * fungualtissue1230 for the code to support the PC versions of Kingdom Hearts III
-* All the sponsors / donators who contributed so far
+* All the sponsors / donators who contributed to xeeynamo for the initial project
+* Minty123 for codebase cleanup after project archiving
 
 ## License
 
@@ -63,6 +60,4 @@ If you have more doubts about the GPL license, have a read to the following link
 
 ## Privacy
 
-The application will have full access to the file you will open by using "File\Open" in order to be able to modify your save game data and it will send the version of the save editor to provide customized messages at the home page to suggest what changes you will find in an eventual new version of this tool.
-
-Few information such as name of the operating system, name of the game you choose to access to and crash reports will be send for diagnostic purpose and to improve the save editing functionalities. By knowing which games are modified the most, I can take knowledge of it and target them to add new editing features. You can also choose to send those reports anonymously. When not anonymous, a cookie will be send which represents a totally random number generated the very first time you open the Save Editor. The code is open source and there is absolute transparency on [which information are sent](KHSave.SaveEditor/Services/ReporterService.cs).
+The application will have full access to the file you will open by using "File\Open" in order to be able to modify your save game data.

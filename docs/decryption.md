@@ -1,6 +1,6 @@
 # Save game decryption
 
-Before using a save with Kingdom Save Editor, you need to extract the save or decrypt it. Every console has their own different way of decrypting the saves.
+Before using a console save with Kingdom Save Editor, you need to extract the save or decrypt it. Every console has their own different way of decrypting the saves.
 
 ## PlayStation 2
 
@@ -39,3 +39,7 @@ For a real PSP, all saves prior to 6.xx firmware are decrypted. But for the next
 If you are using the emulator Citra, saves are already decrypted. Just go to `File\Open Citra Folder` then navigate to `sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title` to find and modify your save.
 
 With a physical Nintendo 3DS, saves are encrypted by default. I recommend to follow [this guide](https://gbatemp.net/threads/extract-and-decrypt-games-nand-backups-and-sd-contents-with-ninfs.499994/) to do it.
+
+## PC
+
+You don't need to decrypt saves. For KH HD1.5+2.5 REMIX Steam version (in Windows) the saves can be found in `C:\Users\{$USERNAME}\Documents\My Games\KINGDOM HEARTS HD 1.5+2.5 ReMIX\Steam\{$ID}\` and the save files are .png files.
