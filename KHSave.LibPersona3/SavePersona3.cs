@@ -258,7 +258,7 @@ namespace KHSave.LibPersona3
                     throw new Exception("This Persona 3 save is not allowed to be saved. Save Editor bug?");
             }
 
-            Task.WhenAll(
+            Task.WaitAll(
                 Task.Run(() =>
                 {
                     WriteSection(SectionType.CalendarDisplay, CalendarDate);
@@ -278,18 +278,11 @@ namespace KHSave.LibPersona3
                 }),
                 Task.Run(() =>
                 {
-                    MemoryStream stream;
+                    using var stream = new MemoryStream(Sections[SectionType.SocialLinks]);
                     if (SocialLinksPortable != null)
-                    {
-                        stream = new MemoryStream(0x430);
                         Mapper.WriteObject(stream, SocialLinksPortable);
-                    }
-                    else
-                    {
-                        stream = new MemoryStream(0x508);
+                    else if (SocialLinks != null)
                         Mapper.WriteObject(stream, SocialLinks);
-                    }
-                    Sections[SectionType.Inventory] = stream.GetBuffer();
                 }),
                 Task.Run(() =>
                 {
