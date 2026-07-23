@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Xe.BinaryMapper;
 
@@ -6,6 +7,7 @@ namespace KHSave.LibRecom
     public class SaveKhRecom
     {
         private const int ValidMagicCode = 7;
+        private const int MooglePointsMirrorOffset = 4;
 
         [Data] public int MagicCode { get; set; }
         [Data] public uint Checksum { get; set; }
@@ -23,6 +25,7 @@ namespace KHSave.LibRecom
             byte[] data;
             using (var saveStream = new MemoryStream())
             {
+                SyncMooglePointsMirror();
                 BinaryMapping.WriteObject(saveStream, Data);
                 data = saveStream.ToArray();
             }
@@ -53,6 +56,12 @@ namespace KHSave.LibRecom
             return magicCode == ValidMagicCode && stream.Length >= 0x10;
         }
 
+
+        //the game stores a second copy of the moogle points in RealData
+        private void SyncMooglePointsMirror()
+        {
+            BitConverter.GetBytes(Data.McWork.MooglePoints).CopyTo(Data.RealData, MooglePointsMirrorOffset);
+        }
 
         private static uint CalculateChecksum(byte[] data)
         {

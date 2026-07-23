@@ -9,5 +9,7 @@ namespace KHSave.LibRecom.Types
         [Data(0x1aa4, Count = 0x49C)] public byte[] CardInventoryCount { get; set; }
 
         [Data(0x2830)] public int Experience { get; set; }
+
+        [Data(0x2838)] public int MooglePoints { get; set; }
     }
 }

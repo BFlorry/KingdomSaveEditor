@@ -70,5 +70,11 @@ namespace KHSave.SaveEditor.KhRecom.ViewModels
             get => _save.McWork.Experience;
             set => _save.McWork.Experience = value;
         }
+
+        public int MooglePoints
+        {
+            get => _save.McWork.MooglePoints;
+            set => _save.McWork.MooglePoints = value;
+        }
     }
 }

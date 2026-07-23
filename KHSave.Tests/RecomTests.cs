@@ -1,4 +1,5 @@
 using Xunit;
+using KHSave.Archives;
 using KHSave.LibRecom;
 using System.IO;
 using System;
@@ -113,6 +114,44 @@ namespace KHSave.Tests
             Assert.Equal(15, save.McWork.Experience);
         });
 
+        [Theory]
+        [InlineData("Saves/KHReCoM_WW_1162MP.png", 1162)]
+        [InlineData("Saves/KHReCoM_WW_1244MP.png", 1244)]
+        [InlineData("Saves/BASLUS-21799434F4D2D3032.PSV", 128)]
+        public void CheckMooglePointsAmount(string filePath, int expected)
+        {
+            var save = ReadArchivedSave(filePath);
+
+            Assert.Equal(expected, save.McWork.MooglePoints);
+            Assert.Equal(expected, BitConverter.ToInt32(save.RealData, 4));
+        }
+
+        [Fact]
+        public void WriteUpdatesTheMooglePointsMirror() => OnSave(save =>
+        {
+            save.Data.McWork.MooglePoints = 9999;
+
+            using (var stream = new MemoryStream())
+            {
+                save.Write(stream);
+                stream.Position = 0;
+                var actual = SaveKhRecom.Read(stream).Data;
+
+                Assert.Equal(9999, actual.McWork.MooglePoints);
+                Assert.Equal(9999, BitConverter.ToInt32(actual.RealData, 4));
+            }
+        });
+
+        [Fact]
+        public void WriteBackSaveUnchanged() => File.OpenRead("Saves/BISLPM-66676COM-01").Using(expected =>
+            Helpers.AssertStream(expected, stream =>
+            {
+                var actual = new MemoryStream();
+                SaveKhRecom.Read(stream).Write(actual);
+
+                return actual;
+            }));
+
         [Fact]
         public void CheckTables() => OnSave2(save =>
         {
@@ -150,5 +189,17 @@ namespace KHSave.Tests
 
         private static void OnSaveData(Action<DataRecom> test) =>
             OnSave(save => test(save.Data));
+
+        private static DataRecom ReadArchivedSave(string filePath)
+        {
+            using (var stream = File.OpenRead(filePath))
+            {
+                Assert.True(ArchiveFactories.TryGetFactory(stream, out var archiveFactory));
+
+                var archive = archiveFactory.Read(stream);
+                using (var entryStream = new MemoryStream(archive.Entries[0].Data))
+                    return SaveKhRecom.Read(entryStream).Data;
+            }
+        }
     }
 }
