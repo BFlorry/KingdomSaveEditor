@@ -7,18 +7,18 @@
     <OutputType>WinExe</OutputType>
     <StartupObject />
     <UseWpf>true</UseWpf>
-    <Version>1.15.5</Version>
-    <RepositoryUrl>https://github.com/Xeeynamo/KingdomSaveEditor</RepositoryUrl>
-    <PackageProjectUrl>http://kingdomsaveeditor.xee.dev/</PackageProjectUrl>
-    <AssemblyVersion>1.15.5</AssemblyVersion>
-    <Description>http://kingdomsaveeditor.xee.dev/</Description>
-    <Copyright>Copyright (C) 2021 Luciano Ciccariello</Copyright>
+    <Version>1.16.0</Version>
+    <RepositoryUrl>https://github.com/BFlorry/KingdomSaveEditor</RepositoryUrl>
+    <PackageProjectUrl>https://bflorry.github.io/KingdomSaveEditor</PackageProjectUrl>
+    <AssemblyVersion>1.16.0</AssemblyVersion>
+    <Description>General purpose videogame save editor mostly for Kingdom Hearts games</Description>
+    <Copyright>Copyright (C) 2026 Luciano Ciccariello, Minty123, Mikko (BFlorry) Mäntylä</Copyright>
     <RepositoryType></RepositoryType>
     <PackageTags></PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <FileVersion>1.15.5</FileVersion>
+    <FileVersion>1.16.0</FileVersion>
     <PackageId>KHSave.SaveEditor</PackageId>
-    <Authors>Luciano (Xeeynamo) Ciccariello</Authors>
+    <Authors>Luciano (Xeeynamo) Ciccariello, Minty123, Mikko (BFlorry) Mäntylä</Authors>
     <Product>Kingdom Save Editor</Product>
       
     <PackageLicenseExpression>GPL3</PackageLicenseExpression>
