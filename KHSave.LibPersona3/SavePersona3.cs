@@ -201,17 +201,6 @@ namespace KHSave.LibPersona3
                     BattlePartyMember4 = (Characters)reader.ReadInt16();
                 })
             );
-
-            var path = $"D:\\{Version}";
-            Directory.CreateDirectory(path);
-            foreach (var s in Sections)
-            {
-                using var _stream = File.Create($"{path}\\{(int)s.Key}");
-                var _writer = new BinaryWriter(_stream);
-                _writer.Write((int)s.Key);
-                _writer.Write(s.Value.Length);
-                _writer.Write(s.Value);
-            }
         }
 
         public static SavePersona3 Read(Stream stream) => new(stream);
@@ -368,7 +357,7 @@ namespace KHSave.LibPersona3
             if (!Sections.TryGetValue(SectionType.GameFlags, out var data))
                 return default;
             var index = (int)flagId / 8;
-            if (index > data.Length)
+            if (index >= data.Length)
                 return default;
             return (data[index] & (1 << ((int)flagId & 7))) != 0;
         }
@@ -378,7 +367,7 @@ namespace KHSave.LibPersona3
             if (!Sections.TryGetValue(SectionType.GameFlags, out var data))
                 return;
             var index = (int)flagId / 8;
-            if (index > data.Length)
+            if (index >= data.Length)
                 return;
             if (value)
                 data[index] = (byte)(data[index] | (1 << ((int)flagId & 7)));
