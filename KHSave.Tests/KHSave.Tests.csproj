@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <None Update="Saves\**">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
