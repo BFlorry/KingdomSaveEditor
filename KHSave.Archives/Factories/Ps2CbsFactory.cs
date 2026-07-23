@@ -9,9 +9,9 @@ namespace KHSave.Archives.Factories
 {
     public class Ps2CbsFactory : IArchiveFactory
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "PS2 CBS";
 
-        public string Description => throw new NotImplementedException();
+        public string Description => "PlayStation 2 CodeBreaker save";
 
         public IArchive Create()
         {

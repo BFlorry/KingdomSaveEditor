@@ -9,9 +9,9 @@ namespace KHSave.Archives.Factories
 {
     public class Ps2PsuFactory : IArchiveFactory
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "PS2 PSU";
 
-        public string Description => throw new NotImplementedException();
+        public string Description => "PlayStation 2 PSU memory card export";
 
         public IArchive Create()
         {

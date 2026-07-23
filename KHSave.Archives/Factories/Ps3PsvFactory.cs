@@ -5,9 +5,9 @@ namespace KHSave.Archives.Factories
 {
     public class Ps3PsvFactory : IArchiveFactory
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "PS3 PSV";
 
-        public string Description => throw new NotImplementedException();
+        public string Description => "PlayStation 3 PSV memory card export";
 
         public IArchive Create()
         {
