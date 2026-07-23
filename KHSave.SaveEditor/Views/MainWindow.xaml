@@ -69,25 +69,31 @@
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Go to Home Page" Command="{Binding OpenLinkCommand}"
-                    CommandParameter="https://kingdomsaveeditor.xee.dev">
+                    CommandParameter="https://bflorry.github.io/KingdomSaveEditor/">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource WebURL_16x}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Get the Source Code" Command="{Binding OpenLinkCommand}"
-                    CommandParameter="https://github.com/Xeeynamo/KingdomSaveEditor">
+                    CommandParameter="https://github.com/BFlorry/KingdomSaveEditor">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource WebURL_16x}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Report bug or missing features" Command="{Binding OpenGitHubIssueLinkCommand}"
-                    CommandParameter="https://github.com/Xeeynamo/KingdomSaveEditor/issues">
+                    CommandParameter="https://github.com/BFlorry/KingdomSaveEditor/issues">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource WebURL_16x}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Join Discord server" Command="{Binding OpenLinkCommand}"
+                <MenuItem Header="Join the old read-only xeeynamo's Discord server" Command="{Binding OpenLinkCommand}"
                     CommandParameter="https://kse-discord.xee.dev">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource WebURL_16x}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Join BFlorry's Discord server" Command="{Binding OpenLinkCommand}"
+                    CommandParameter="https://discord.gg/PYAcKTT3yw">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource WebURL_16x}"/>
                     </MenuItem.Icon>

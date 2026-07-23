@@ -111,21 +111,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Margin="0 0 5 0" Width="32"
-                    Source="{StaticResource FundIcon}"/>
-                <StackPanel Grid.Column="1">
-                    <TextBlock Grid.Column="1" TextWrapping="Wrap"
-                        Text="Fund me to be featured below and help me to improve all my projects!"/>
-
-                    <TextBlock Foreground="{StaticResource textHyperlink}">
-                    <Hyperlink
-                        NavigateUri="{Binding FundLink}"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        TextDecorations="{x:Null}">
-                        Click to prepare to fund me today!
-                    </Hyperlink>
-                    </TextBlock>
-                </StackPanel>
             </Grid>
         </StackPanel>
     </ScrollViewer>

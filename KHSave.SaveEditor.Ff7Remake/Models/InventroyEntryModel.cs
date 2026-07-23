@@ -49,7 +49,7 @@ namespace KHSave.SaveEditor.Ff7Remake.Models
         public Visibility SimpleVisibility => Global.IsAdvancedMode ? Visibility.Collapsed : Visibility.Visible;
         public Visibility AdvancedVisibility => Global.IsAdvancedMode ? Visibility.Visible : Visibility.Collapsed;
         public Uri AddItemRequestUrl =>
-            new Uri($"https://github.com/Xeeynamo/KH3SaveEditor/issues/new?assignees=Xeeynamo&labels=ff7r-item&template=ff7r-missing-item-name-request.md&title=FF7R+Missing+item+name+request+(Item%20ID%20{ItemId})");
+            new Uri($"https://github.com/BFlorry/KingdomSaveEditor/issues/new?assignees=Xeeynamo&labels=ff7r-item&template=ff7r-missing-item-name-request.md&title=FF7R+Missing+item+name+request+(Item%20ID%20{ItemId})");
         public KhEnumListModel<ItemCategory> Categories => new KhEnumListModel<ItemCategory>();
         public IEnumerable<ItemModel> ItemTypes { get; }
 

@@ -4,7 +4,7 @@ namespace KHSave.SaveEditor.ViewModels
 {
     public class HomeViewModel : BaseNotifyPropertyChanged
     {
-        private const string DefaultFundLink = "https://github.com/sponsors/Xeeynamo";
+        private const string DefaultFundLink = "";
         private string _fundLink;
         public string FundLink
         {

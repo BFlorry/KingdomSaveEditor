@@ -107,7 +107,7 @@ namespace KHSave.SaveEditor.Ff7Remake.Data
 
         private static async Task<IEnumerable<Location>> InternalFetchLocations()
         {
-            const string url = "https://raw.githubusercontent.com/Xeeynamo/KH3SaveEditor/master/resources/ff7r-meta-locations.yml";
+            const string url = "https://raw.githubusercontent.com/BFlorry/KingdomSaveEditor/tree/master/resources/ff7r-meta-locations.yml";
             using (var client = new HttpClient())
             {
                 using (var response = await client.GetAsync(url))
