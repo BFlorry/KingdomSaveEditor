@@ -24,7 +24,6 @@
     <PackageLicenseExpression>GPL3</PackageLicenseExpression>
     <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
-  <Target Name="_CheckForGenerateAppxPackageOnBuild" />
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />

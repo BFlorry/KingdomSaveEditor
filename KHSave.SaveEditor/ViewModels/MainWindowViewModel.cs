@@ -54,7 +54,6 @@ namespace KHSave.SaveEditor.ViewModels
         private readonly IFileDialogManager fileDialogManager;
         private readonly IWindowManager windowManager;
         private readonly IAlertMessage alertMessage;
-        private readonly IAppIdentity _appIdentity;
         private readonly ContentFactory contentFactory;
         private object dataContext;
         private ContentType _saveKind;
@@ -64,7 +63,7 @@ namespace KHSave.SaveEditor.ViewModels
         private ProcessStream _processStream;
 
         private string OriginalTitle => "Kingdom Save Editor";
-        public string CurrentVersion { get; } = new DesktopAppIdentity().Version;
+        public string CurrentVersion { get; }
 
         private Window Window => Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.IsActive);
 
@@ -78,9 +77,6 @@ namespace KHSave.SaveEditor.ViewModels
                 return IsFileOpen ? $"{fileDialogManager.CurrentFileName} | {OriginalTitle}" : OriginalTitle;
             }
         }
-
-        public Visibility UpdateVisibility => _appIdentity.IsMicrosoftStore ?
-            Visibility.Collapsed : Visibility.Visible;
 
         public bool IsFileOpen => SaveKind != ContentType.Unload && fileDialogManager.IsFileOpen;
 
@@ -142,9 +138,9 @@ namespace KHSave.SaveEditor.ViewModels
             this.fileDialogManager = fileDialogManager;
             this.windowManager = windowManager;
             this.alertMessage = alertMessage;
-            _appIdentity = appIdentity;
             this.contentFactory = contentFactory;
             HomeContext = homeContext;
+            CurrentVersion = appIdentity.Version;
 
             OpenCommand = new RelayCommand(o => fileDialogManager.Open(stream => Open(stream)));
             OpenPcsx2Command = new RelayCommand(o => OpenPcsx2(stream => Open(stream)));

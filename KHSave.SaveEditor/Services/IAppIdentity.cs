@@ -4,6 +4,5 @@ namespace KHSave.SaveEditor.Services
     {
         string Name { get; }
         string Version { get; }
-        bool IsMicrosoftStore { get; }
     }
 }
