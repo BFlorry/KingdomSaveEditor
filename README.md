@@ -47,6 +47,7 @@ If you want to add missing names, improve it or add new offsets, just clone the 
 * fungualtissue1230 for the code to support the PC versions of Kingdom Hearts III
 * All the sponsors / donators who contributed to xeeynamo for the initial project
 * Minty123 for codebase cleanup after project archiving
+* u/k23usa for creating an extensive save collection of 1.5+2.5 [on r/KingdomHearts](https://www.reddit.com/r/KingdomHearts/comments/plwisw/ive_created_a_collection_of_save_points_pc/)
 
 ## License
 
