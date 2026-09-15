@@ -148,6 +148,9 @@ namespace KHSave.Tests
             var outStream = new MemoryStream();
             SaveKh2.Write(outStream, save);
 
+            // Hax because SaveKh2.Write leaves the stream at its end, while GetGameVersion reads the magic code from the current position.
+            outStream.Position = 0;
+
             var actual = SaveKh2.Read(outStream);
             Assert.Equal(7, actual.DriveBarMax);
             Assert.Equal(3, actual.DriveBarCurrent);
