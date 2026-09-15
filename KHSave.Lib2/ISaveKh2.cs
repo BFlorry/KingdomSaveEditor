@@ -36,6 +36,9 @@ namespace KHSave.Lib2
         CommandType ShortcutCross { get; set; }
         int BonusLevel { get; set; }
 
+        byte DriveBarCurrent { get; set; }
+        byte DriveBarMax { get; set; }
+
         bool Vibration { get; set; }
         bool Unknown41a4_1 { get; set; }
         bool Unknown41a4_2 { get; set; }

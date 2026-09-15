@@ -95,6 +95,62 @@ namespace KHSave.Tests
             Assert.Equal(Difficulty.Critical, save.Difficulty);
             Assert.Equal(2885291, save.Experience);
             Assert.Equal(60, save.BonusLevel);
+
+            Assert.Equal(9, save.DriveBarCurrent);
+            Assert.Equal(9, save.DriveBarMax);
+        }
+
+        private const int DriveBarCurrentOffset = 0x3529;
+        private const int DriveBarMaxOffset = 0x352a;
+        private const int ChecksumOffset = 0x8;
+        private const int ChecksumLength = 0x4;
+
+        [Theory]
+        [InlineData(DriveBarCurrentOffset)]
+        [InlineData(DriveBarMaxOffset)]
+        public void TestDriveGaugeIsWrittenAtTheExpectedOffset(int offset)
+        {
+            var expectedData = File.ReadAllBytes(FilePath);
+
+            var save = SaveKh2.Read(new MemoryStream(expectedData));
+            if (offset == DriveBarMaxOffset)
+                save.DriveBarMax = 5;
+            else
+                save.DriveBarCurrent = 5;
+
+            var outStream = new MemoryStream();
+            SaveKh2.Write(outStream, save);
+            var actualData = outStream.ToArray();
+
+            Assert.Equal(expectedData.Length, actualData.Length);
+            Assert.Equal(5, actualData[offset]);
+
+            // Only the edited byte and the checksum are allowed to change.
+            for (var i = 0; i < expectedData.Length; i++)
+            {
+                if (i == offset)
+                    continue;
+                if (i >= ChecksumOffset && i < ChecksumOffset + ChecksumLength)
+                    continue;
+
+                Assert.True(expectedData[i] == actualData[i],
+                    $"Unexpected change at {i:X}: expected {expectedData[i]:X02} but found {actualData[i]:X02}");
+            }
+        }
+
+        [Fact]
+        public void TestDriveGaugeRoundTrips()
+        {
+            var save = SaveKh2.Read(new MemoryStream(File.ReadAllBytes(FilePath)));
+            save.DriveBarMax = 7;
+            save.DriveBarCurrent = 3;
+
+            var outStream = new MemoryStream();
+            SaveKh2.Write(outStream, save);
+
+            var actual = SaveKh2.Read(outStream);
+            Assert.Equal(7, actual.DriveBarMax);
+            Assert.Equal(3, actual.DriveBarCurrent);
         }
 
         [Fact]

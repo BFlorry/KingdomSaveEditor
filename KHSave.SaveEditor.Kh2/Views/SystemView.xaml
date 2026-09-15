@@ -87,6 +87,29 @@
                 <TextBox Text="{Binding BonusLevel, UpdateSourceTrigger=PropertyChanged}"/>
             </common:TwoEqualColumnsStackPanel>
         </GroupBox>
+        <GroupBox Header="Drive gauge" Visibility="{Binding DriveGaugeVisibility}">
+            <common:TwoEqualColumnsStackPanel>
+                <TextBlock Text="Current"/>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Right" MinWidth="20" Margin="5 0 0 0"
+                               TextAlignment="Right" Text="{Binding DriveBarCurrent}"/>
+                    <Slider Minimum="0" Maximum="{Binding DriveBarMax}"
+                            SmallChange="1" LargeChange="1" TickFrequency="1"
+                            IsSnapToTickEnabled="True" TickPlacement="BottomRight"
+                            Value="{Binding DriveBarCurrent}"/>
+                </DockPanel>
+
+                <TextBlock Text="Maximum"/>
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Right" MinWidth="20" Margin="5 0 0 0"
+                               TextAlignment="Right" Text="{Binding DriveBarMax}"/>
+                    <Slider Minimum="3" Maximum="9"
+                            SmallChange="1" LargeChange="1" TickFrequency="1"
+                            IsSnapToTickEnabled="True" TickPlacement="BottomRight"
+                            Value="{Binding DriveBarMax}"/>
+                </DockPanel>
+            </common:TwoEqualColumnsStackPanel>
+        </GroupBox>
         <GroupBox Header="Room modifier">
             <Grid>
                 <Grid.ColumnDefinitions>

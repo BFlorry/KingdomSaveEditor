@@ -51,6 +51,8 @@ namespace KHSave.Lib2
             public bool CameraUpDownReversed { get; set; }
             public bool Unknown41a5_1 { get; set; }
             public bool Unknown41a5_2 { get; set; }
+            public byte DriveBarCurrent { get; set; } // Vanilla value unknown
+            public byte DriveBarMax { get; set; } // Vanilla value unknown
             public short ProgressTutorialMenu { get; set; }
             public bool NewStatusValor { get; set; }
             public bool NewStatusWisdom { get; set; }

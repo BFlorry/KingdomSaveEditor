@@ -22,6 +22,7 @@ using KHSave.SaveEditor.Common.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Windows;
 using Xe.Tools;
 
 namespace KHSave.SaveEditor.Kh2.ViewModels
@@ -47,6 +48,33 @@ namespace KHSave.SaveEditor.Kh2.ViewModels
         public int Munny { get => save.MunnyAmount; set => save.MunnyAmount = value; }
         public int Experience { get => save.Experience; set => save.Experience = value; }
         public int BonusLevel { get => save.BonusLevel; set => save.BonusLevel = value; }
+
+        // The drive gauge offsets are only known for the Final Mix layout.
+        public Visibility DriveGaugeVisibility =>
+            save.IsFinalMix ? Visibility.Visible : Visibility.Collapsed;
+
+        public byte DriveBarCurrent
+        {
+            get => save.DriveBarCurrent;
+            set
+            {
+                save.DriveBarCurrent = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public byte DriveBarMax
+        {
+            get => save.DriveBarMax;
+            set
+            {
+                save.DriveBarMax = value;
+                OnPropertyChanged();
+
+                if (save.DriveBarCurrent > value)
+                    DriveBarCurrent = value;
+            }
+        }
 
         public WorldType WorldId
         {
