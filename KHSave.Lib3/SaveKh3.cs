@@ -1,6 +1,7 @@
 /*
     Kingdom Save Editor
     Copyright (C) 2020 Luciano Ciccariello
+    Copyright (C) 2026 Mikko Mäntylä (BFlorry)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -47,6 +48,7 @@ namespace KHSave.Lib3
         [Data(0x14)] public DifficultyType Difficulty { get; set; }
         [Data(0x18)] public WorldType WorldLogo { get; set; }
 
+        [Data(0x20)] public int PlayTime { get; set; }
         [Data(0x24)] public int TotalExp { get; set; }
         [Data(0x28)] public int Munny { get; set; }
         [Data(0x2C)] public byte Level { get; set; }
@@ -55,8 +57,7 @@ namespace KHSave.Lib3
         [Data(0x32, Count = 5)] public List<PartyCharacter> Party { get; set; }
         [Data(0x39)] public bool SaveClear { get; set; }
         [Data(0x54)] public LocationType LocationName { get; set; }
-        [Data(0x58)] public int Unknown00058 { get; set; }
-        [Data(0x5C)] public int Unknown0005C { get; set; }
+        [Data(0x58)] public long SaveTimestamp { get; set; }
         [Data(0x60)] public CharacterIconType BaseSaveIcon { get; set; }
         public CharacterIconType DlcSaveIcon { get => default(CharacterIconType); set { } }
 
@@ -133,10 +134,18 @@ namespace KHSave.Lib3
             throw new InvalidDataException("Input not recognized as a valid or supported Kingdom Hearts III save game.");
         }
 
+        /// <summary>
+        /// CRC32 of the FileSize bytes that follow the 0x10-byte header. On PC the
+        /// data block is 8 bytes longer than FileSize and those bytes are not hashed.
+        /// </summary>
         public static uint CalculateChecksum(Stream stream)
         {
+            stream.Position = 4;
+            var fileSize = new BinaryReader(stream).ReadInt32();
+            var length = (int)Math.Min(fileSize, stream.Length - 0x10);
+
             stream.Position = 0x10;
-            var buffer = stream.ReadBytes((int)(stream.Length - stream.Position));
+            var buffer = stream.ReadBytes(length);
             return Crc32Algorithm.Compute(buffer);
         }
     }

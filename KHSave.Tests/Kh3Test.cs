@@ -1,6 +1,7 @@
 /*
     Kingdom Save Editor
     Copyright (C) 2020 Luciano Ciccariello
+    Copyright (C) 2026 Mikko Mäntylä (BFlorry)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -118,7 +119,9 @@ namespace KHSave.Tests
             Assert.Equal(0x45764053, save.MagicCode);
             Assert.Equal(DifficultyType.Proud, save.Difficulty);
             Assert.Equal(WorldType.ScalaAdCaelum, save.WorldLogo);
+            Assert.Equal(190443, save.PlayTime);
             Assert.Equal(1413899, save.TotalExp);
+            Assert.Equal(new DateTime(2019, 3, 5, 20, 38, 0), new DateTime(save.SaveTimestamp) - TimeSpan.FromTicks(save.SaveTimestamp % TimeSpan.TicksPerSecond));
             Assert.Equal(223439, save.Munny);
             Assert.Equal(94, save.Level);
             Assert.Equal(DesireChoice.Vitality, save.DesireChoice);

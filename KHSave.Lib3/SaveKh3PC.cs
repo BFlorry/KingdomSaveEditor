@@ -1,6 +1,7 @@
 /*
     Kingdom Save Editor
     Copyright (C) 2020 Luciano Ciccariello
+    Copyright (C) 2026 Mikko Mäntylä (BFlorry)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,7 +18,7 @@
 */
 
 /*
-    PC Version as modified by @fungualtissue1230
+    PC Version as modified by @fungualtissue1230 in the OpenKH Discord
     https://discord.com/channels/409140906625728532/827187180480102470/1394232282931531879
 */
 
@@ -41,6 +42,7 @@ namespace KHSave.Lib3
         [Data(0x14)] public DifficultyType Difficulty { get; set; }
         [Data(0x18)] public WorldType WorldLogo { get; set; }
 
+        [Data(0x20)] public int PlayTime { get; set; }
         [Data(0x24)] public int TotalExp { get; set; }
         [Data(0x28)] public int Munny { get; set; }
         [Data(0x2C)] public byte Level { get; set; }
@@ -49,8 +51,7 @@ namespace KHSave.Lib3
         [Data(0x32, Count = 5)] public List<PartyCharacter> Party { get; set; }
         [Data(0x39)] public bool SaveClear { get; set; }
         [Data(0x54)] public LocationType LocationName { get; set; }
-        [Data(0x58)] public int Unknown00058 { get; set; }
-        [Data(0x5C)] public int Unknown0005C { get; set; }
+        [Data(0x58)] public long SaveTimestamp { get; set; }
         [Data(0x60)] public CharacterIconType BaseSaveIcon { get; set; }
         [Data(0x68)] public CharacterIconType DlcSaveIcon { get; set; }
 
@@ -68,6 +69,7 @@ namespace KHSave.Lib3
         [Data(0xB4A8)] public int BonusMagic { get; set; }
         [Data(0xB4AC)] public int BonusDefense { get; set; }
         [Data(0xB4C4, 0x50, 4)] public List<int> Storyflags { get; set; }
+        [Data(0xB6C4, 0x40)] public byte[] GameflowBools { get; set; }
         [Data(0xBBA0, 0x100)] public string MapPath { get; set; }
         [Data(0xBCA0, 0x40)] public string MapSpawn { get; set; }
         [Data(0xBCE0, 0x100)] public string PlayerScript { get; set; }

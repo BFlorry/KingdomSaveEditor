@@ -69,7 +69,7 @@
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Game timer"/>
                 <TextBox IsReadOnly="True" IsEnabled="False"
-                         Text="Disabled due to file corruption"/>
+                         Text="Disabled due to corruption risk"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2">
@@ -95,6 +95,11 @@
                 <TextBox Text="{Binding Munny, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </Grid>
+
+        <StackPanel>
+            <TextBlock Text="Play time (seconds)"/>
+            <TextBox Text="{Binding PlayTime, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
 
         <Grid>
             <Grid.ColumnDefinitions>

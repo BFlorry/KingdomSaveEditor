@@ -1,6 +1,7 @@
 /*
     Kingdom Save Editor
     Copyright (C) 2020 Luciano Ciccariello
+    Copyright (C) 2026 Mikko Mäntylä (BFlorry)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,6 +36,7 @@ namespace KHSave.Lib3
         DifficultyType Difficulty { get; set; }
         WorldType WorldLogo { get; set; }
 
+        int PlayTime { get; set; }
         int TotalExp { get; set; }
         int Munny { get; set; }
         byte Level { get; set; }
@@ -43,8 +45,7 @@ namespace KHSave.Lib3
         List<PartyCharacter> Party { get; set; }
         bool SaveClear { get; set; }
         LocationType LocationName { get; set; }
-        int Unknown00058 { get; set; } // Changes every time
-        int Unknown0005C { get; set; } // Changes every time
+        long SaveTimestamp { get; set; } // .NET/UE4 ticks (100ns since 0001-01-01)
         CharacterIconType BaseSaveIcon { get; set; }
         CharacterIconType DlcSaveIcon { get; set; }
 

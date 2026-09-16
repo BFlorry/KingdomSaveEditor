@@ -1,0 +1,26 @@
+<Window x:Class="KHSave.SaveEditor.Views.Kh3AccountIdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="Kingdom Hearts III PC save" Width="420" WindowStyle="ToolWindow"
+        SizeToContent="Height" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextWrapping="Wrap"
+            Text="This save is encrypted with a key derived from the account ID it was saved with. Enter the SteamID64 (17 digits) or Epic Games account ID: it is the name of the folder that contains 'SaveGames\kh3sv2' under Documents."/>
+        <TextBox Grid.Row="2" x:Name="AccountIdTextBox" Text="{Binding AccountId, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Width="75" Margin="0,0,5,0" IsDefault="True" Click="OkButton_Click"/>
+            <Button Content="Cancel" Width="75" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

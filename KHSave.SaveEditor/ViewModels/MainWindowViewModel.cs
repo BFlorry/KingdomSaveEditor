@@ -1,6 +1,7 @@
 /*
     Kingdom Save Editor
     Copyright (C) 2020 Luciano Ciccariello
+    Copyright (C) 2026 Mikko Mäntylä (BFlorry)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -372,7 +373,41 @@ namespace KHSave.SaveEditor.ViewModels
         public bool TryOpenKhDDD(Stream stream) => TryOpen(SaveKhDDD.IsValid, stream, ContentType.KingdomHeartsDDD);
         public bool TryOpenKhRecom(Stream stream) => TryOpen(SaveKhRecom.IsValid, stream, ContentType.KingdomHeartsRecom);
         public bool TryOpenKh02(Stream stream) => TryOpen(SaveKh02.IsValid, stream, ContentType.KingdomHearts02);
-        public bool TryOpenKh3(Stream stream) => TryOpen(SaveKh3.IsValid, stream, ContentType.KingdomHearts3);
+        public bool TryOpenKh3(Stream stream) =>
+            TryOpen(SaveKh3.IsValid, stream, ContentType.KingdomHearts3) ||
+            TryOpenKh3Encrypted(stream);
+
+        /// <summary>
+        /// KH3 Steam / Epic saves are AES encrypted with a key derived from the account ID
+        /// </summary>
+        private bool TryOpenKh3Encrypted(Stream stream)
+        {
+            if (!SaveKh3PcCrypto.IsEncrypted(stream))
+                return false;
+
+            var accountId = SaveKh3PcCrypto.TryGetAccountIdFromPath(fileDialogManager.CurrentFileName)
+                ?? SaveKh3PcCrypto.TryFindAccountId(stream, SaveKh3PcCrypto.FindLocalAccountIds());
+            if (accountId == null)
+            {
+                string enteredId = null;
+                var result = windowManager.Push<Kh3AccountIdWindow>(
+                    onSuccess: window =>
+                    {
+                        enteredId = window.AccountId;
+                        return true;
+                    });
+                if (result != true)
+                    return false;
+                accountId = enteredId;
+            }
+
+            var plainStream = SaveKh3PcCrypto.Decrypt(stream, accountId);
+            if (!TryOpen(SaveKh3.IsValid, plainStream, ContentType.KingdomHearts3))
+                return false;
+
+            WriteToStream = new Kh3PcEncryptedWriteToStream(WriteToStream, accountId);
+            return true;
+        }
         public bool TryOpenFF7Remake(Stream stream) => TryOpen(SaveFf7Remake.IsValid, stream, ContentType.FinalFantasy7Remake);
         public bool TryOpenPersona3(Stream stream) => TryOpen(SavePersona3.IsValid, stream, ContentType.Persona3);
         public bool TryOpenPersona5(Stream stream) => TryOpen(SavePersona5.IsValid, stream, ContentType.Persona5);
